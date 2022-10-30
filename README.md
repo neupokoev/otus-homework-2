@@ -1,15 +1,15 @@
 <h1 align="center">OTUS курс для продвинутых тестировщиков</h1>
-<h3 align="left">Домашняя работа №1</h3>
+<h3 align="left">Домашняя работа №2</h3>
 
 ---
-В [этом](https://github.com/neupokoev/otus-homework-1/blob/main/src/test/java/ui/courses/Homework1Tests.java) 
-файле 4 теста, реализующих задание первой домашки.\
+В [этом](https://github.com/neupokoev/otus-homework-2/blob/main/src/test/java/ui/courses/Homework2Tests.java) 
+файле 4 теста, реализующих задание второй домашки.\
 Для запуска тестов необходимо выполнить несколько шагов: 
 1. Скачать данный репозиторий, запустив команду в терминале
 ```bash
-git clone https://github.com/neupokoev/otus-homework-1.git
+git clone https://github.com/neupokoev/otus-homework-2.git
 ```
-2. Перейти в каталог `otus-homework-1`
+2. Перейти в каталог `otus-homework-2`
 ```bash
 cd otus-homework-1
 ```
