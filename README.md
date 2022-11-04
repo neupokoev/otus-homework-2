@@ -11,7 +11,7 @@ git clone https://github.com/neupokoev/otus-homework-2.git
 ```
 2. Перейти в каталог `otus-homework-2`
 ```bash
-cd otus-homework-1
+cd otus-homework-2
 ```
 3. Запустить тесты в одном из браузеров (также должен быть установлен на запускаемой машине)
 
