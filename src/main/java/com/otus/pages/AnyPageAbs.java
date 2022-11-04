@@ -1,7 +1,8 @@
-package pages;
+package com.otus.pages;
 
-import actions.CommonActions;
-import annotations.UrlPrefix;
+import com.otus.actions.CommonActions;
+import com.otus.annotations.UrlPrefix;
+import com.otus.diconfig.GuiceScoped;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 
@@ -10,8 +11,8 @@ import java.lang.reflect.InvocationTargetException;
 
 public abstract class AnyPageAbs<T> extends CommonActions<T> {
 
-  public AnyPageAbs(WebDriver driver) {
-    super(driver);
+  public AnyPageAbs(GuiceScoped guiceScoped) {
+    super(guiceScoped);
   }
 
   private static <T> T convertInstanceOfObject(Object o, Class<T> clazz) {

@@ -1,7 +1,8 @@
-package components;
+package com.otus.components;
 
-import actions.CommonActions;
-import annotations.Component;
+import com.otus.actions.CommonActions;
+import com.otus.annotations.Component;
+import com.otus.diconfig.GuiceScoped;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
@@ -16,8 +17,8 @@ public abstract class AnyComponentAbs<T> extends CommonActions<T> {
     this.standardWaiter.waitForCondition(ExpectedConditions.visibilityOfElementLocated(getComponentLocator()));
   }
 
-  public AnyComponentAbs(WebDriver driver) {
-    super(driver);
+  public AnyComponentAbs(GuiceScoped guiceScoped) {
+    super(guiceScoped);
     actions = new Actions(driver);
   }
 

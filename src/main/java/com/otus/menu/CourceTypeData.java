@@ -1,4 +1,4 @@
-package data.menu;
+package com.otus.menu;
 
 public enum CourceTypeData {
   Programmer("Программирование");

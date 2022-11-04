@@ -1,25 +1,27 @@
+/*
 package ui.courses;
 
-import annotations.Driver;
-import components.OtusCourses;
-import extensions.UIExtension;
+import com.otus.annotations.Driver;
+import com.otus.components.OtusCourses;
+import com.otus.extensions.UIExtension;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
 import org.openqa.selenium.WebDriver;
-import pages.MainPage;
 
 @ExtendWith(UIExtension.class)
 public class Homework2Tests {
 
-  @Driver
+  //@Driver
   public WebDriver driver;
 
   @BeforeEach
   public void openMainPage() {
-    new MainPage(driver)
+*/
+/*    new MainPage(driver)
         .open()
-        .closeAnnoyedCookiesBanner();
+        .closeAnnoyedCookiesBanner();*//*
+
   }
 
   @Test
@@ -57,3 +59,4 @@ public class Homework2Tests {
   }
 
 }
+*/

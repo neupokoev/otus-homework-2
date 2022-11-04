@@ -1,16 +1,16 @@
-package driver;
+package com.otus.driver;
 
-import driver.impl.ChromeWebDriver;
-import driver.impl.FirefoxWebDriver;
-import driver.impl.OperaWebDriver;
-import exceptions.DriverTypeNotSupported;
+import com.otus.driver.impl.FirefoxWebDriver;
+import com.otus.driver.impl.OperaWebDriver;
+import com.otus.exceptions.DriverTypeNotSupported;
+import com.otus.driver.impl.ChromeWebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
 
 import java.util.Locale;
 
 public class DriverFactory implements IDriverFactory {
 
-  private final String browserType = System.getProperty("browser").toLowerCase(Locale.ROOT);
+  private final String browserType = System.getProperty("browser", "chrome").toLowerCase(Locale.ROOT);
 
   @Override
   public EventFiringWebDriver getDriver() {

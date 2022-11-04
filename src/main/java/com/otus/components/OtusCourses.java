@@ -1,13 +1,15 @@
-package components;
+package com.otus.components;
 
 import static org.assertj.core.api.Assertions.assertThat;
 
-import annotations.Component;
+import com.google.inject.Inject;
+import com.otus.annotations.Component;
+import com.otus.diconfig.GuiceScoped;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
-import pages.CoursePage;
+import com.otus.pages.CoursePage;
 
 import java.time.LocalDate;
 import java.time.Year;
@@ -35,15 +37,16 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
   private long coursesAmount;
   private List<WebElement> namedCourses;
 
-  public OtusCourses(WebDriver driver) {
-    super(driver);
+  @Inject
+  public OtusCourses(GuiceScoped guiceScoped) {
+    super(guiceScoped);
   }
 
   public CoursePage clickFirstCourseItem() {
     scrollToElement(courses.get(0));
     courses.get(0).click();
 
-    return new CoursePage(driver);
+    return new CoursePage((GuiceScoped) driver);
   }
 
   public OtusCourses getCoursesAmount() {
@@ -80,7 +83,7 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
   }
 
   //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
-  public CoursePage chooseTheLatestPopularCourse() {
+  public void chooseTheLatestPopularCourse() {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ru"));
     LocalDate theLatestDate = favoriteCourses.stream()
@@ -96,15 +99,14 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
           .contains(theLatestDate.format(DateTimeFormatter.ofPattern("dd MMMM", Locale.forLanguageTag("ru"))))) {
         scrollToElement(course);
         course.click();
-        return new CoursePage(driver);
+        return;
       }
     }
-    return null;
   }
 
 
   //Метод выбора курса, стартующего раньше всех/позже всех (при совпадении дат - выбрать любой) при помощи reduce
-  public CoursePage chooseTheEarliestRegularCourse() {
+  public void chooseTheEarliestRegularCourse() {
 
     DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ru"));
     LocalDate theEarliestDate = regularCourses.stream()
@@ -128,10 +130,9 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
           .contains(theEarliestDate.format(DateTimeFormatter.ofPattern("dd MMMM", Locale.forLanguageTag("ru"))))) {
         scrollToElement(course);
         course.click();
-        return new CoursePage(driver);
+        return;
       }
     }
-    return null;
   }
 
 }

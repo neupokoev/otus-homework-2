@@ -4,8 +4,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>org.example</groupId>
-    <artifactId>firstHomework</artifactId>
+    <groupId>cucumberExample</groupId>
+    <artifactId>secondHomework</artifactId>
     <version>1.0-SNAPSHOT</version>
 
     <properties>
@@ -15,6 +15,8 @@
         <faker.version>1.0.1</faker.version>
         <assertj.version>3.23.1</assertj.version>
         <guava.version>31.1-jre</guava.version>
+        <cucumber.version>5.5.0</cucumber.version>
+        <guice.version>5.1.0</guice.version>
         <checkstyle-plugin.version>3.1.0</checkstyle-plugin.version>
         <findbugs-plugin.version>3.0.5</findbugs-plugin.version>
 
@@ -31,7 +33,8 @@
 
         <webdriver.timeouts.implicitlywait>15000</webdriver.timeouts.implicitlywait>
 
-        <surefire.plugin.version>3.0.0-M5</surefire.plugin.version>
+        <!--<surefire.plugin.version>3.0.0-M5</surefire.plugin.version>-->
+        <surefire.plugin.version>2.22.2</surefire.plugin.version>
         <maven.compiler.plugin.version>3.8.1</maven.compiler.plugin.version>
     </properties>
 
@@ -41,23 +44,26 @@
             <artifactId>webdrivermanager</artifactId>
             <version>${webdriver.manager.version}</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
             <groupId>com.google.guava</groupId>
             <artifactId>guava</artifactId>
             <version>${guava.version}</version>
-        </dependency>
+        </dependency>-->
         <dependency>
             <groupId>org.seleniumhq.selenium</groupId>
             <artifactId>selenium-java</artifactId>
             <version>${selenium.java.version}</version>
         </dependency>
-        <dependency>
+<!--        <dependency>
+            <groupId>org.junit.platform</groupId>
+            <artifactId>junit-platform-commons</artifactId>
+            <version>1.8.1</version>
+        </dependency>-->
+<!--        <dependency>
             <groupId>org.junit</groupId>
             <artifactId>junit-bom</artifactId>
-            <version>${junit.version}</version>
-            <type>pom</type>
-            <scope>import</scope>
-        </dependency>
+            <version>5.8.1</version>
+        </dependency>-->
         <dependency>
             <groupId>com.github.javafaker</groupId>
             <artifactId>javafaker</artifactId>
@@ -65,7 +71,7 @@
         </dependency>
         <dependency>
             <groupId>org.junit.jupiter</groupId>
-            <artifactId>junit-jupiter</artifactId>
+            <artifactId>junit-jupiter-engine</artifactId>
             <version>${junit.version}</version>
         </dependency>
         <dependency>
@@ -73,12 +79,48 @@
             <artifactId>assertj-core</artifactId>
             <version>${assertj.version}</version>
         </dependency>
+        <!-- https://mvnrepository.com/artifact/org.projectlombok/lombok -->
         <dependency>
             <groupId>org.projectlombok</groupId>
             <artifactId>lombok</artifactId>
-            <version>RELEASE</version>
+            <version>1.18.22</version>
             <scope>compile</scope>
         </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-java</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+<!--        <dependency>
+            <groupId>io.cucumber</groupId>
+           &lt;!&ndash; <artifactId>cucumber-core</artifactId>&ndash;&gt;
+            <artifactId>cucumber-core</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>-->
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-junit-platform-engine</artifactId>
+            <version>${cucumber.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>io.cucumber</groupId>
+            <artifactId>cucumber-guice</artifactId>
+            <version>${cucumber.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.google.inject</groupId>
+            <artifactId>guice</artifactId>
+            <version>${guice.version}</version>
+        </dependency>
+<!--        <dependency>
+            <groupId>junit</groupId>
+            <artifactId>junit</artifactId>
+            <version>4.13</version>
+            <scope>test</scope>
+        </dependency>-->
     </dependencies>
 
     <profiles>

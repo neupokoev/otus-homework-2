@@ -1,7 +1,8 @@
-package pages;
+package com.otus.pages;
 
-import annotations.Component;
-import org.openqa.selenium.WebDriver;
+import com.google.inject.Inject;
+import com.otus.annotations.Component;
+import com.otus.diconfig.GuiceScoped;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 
@@ -11,8 +12,9 @@ public class CoursePage extends AnyPageAbs<CoursePage> {
   @FindBy(css = "title")
   WebElement pageTitle;
 
-  public CoursePage(WebDriver driver) {
-    super(driver);
+  @Inject
+  public CoursePage(GuiceScoped guiceScoped) {
+    super(guiceScoped);
   }
 
 }

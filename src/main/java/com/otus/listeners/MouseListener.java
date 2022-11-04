@@ -1,4 +1,4 @@
-package listeners;
+package com.otus.listeners;
 
 import lombok.SneakyThrows;
 import org.openqa.selenium.By;

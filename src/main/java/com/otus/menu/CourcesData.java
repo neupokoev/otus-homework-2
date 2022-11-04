@@ -1,4 +1,4 @@
-package data.menu;
+package com.otus.menu;
 
 public enum CourcesData {
   Highload_Architect("Highload Architect", CourceTypeData.Programmer);

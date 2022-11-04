@@ -1,5 +1,6 @@
-package actions;
+package com.otus.actions;
 
+import com.otus.diconfig.GuiceScoped;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.UnsupportedCommandException;
@@ -8,7 +9,7 @@ import org.openqa.selenium.WebElement;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.PageFactory;
-import waiters.StandardWaiter;
+import com.otus.waiters.StandardWaiter;
 
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -28,8 +29,8 @@ public abstract class CommonActions<T> {
         }
       };
 
-  public CommonActions(WebDriver driver) {
-    this.driver = driver;
+  public CommonActions(GuiceScoped guiceScoped) {
+    this.driver = guiceScoped.driver;
     PageFactory.initElements(driver, this);
 
     standardWaiter = new StandardWaiter(driver);

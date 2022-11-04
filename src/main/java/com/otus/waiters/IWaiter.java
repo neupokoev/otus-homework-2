@@ -1,4 +1,4 @@
-package waiters;
+package com.otus.waiters;
 
 import org.openqa.selenium.support.ui.ExpectedCondition;
 

@@ -1,4 +1,4 @@
-package waiters;
+package com.otus.waiters;
 
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;

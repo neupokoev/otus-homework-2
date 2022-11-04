@@ -1,13 +1,14 @@
-package components;
+package com.otus.components;
 
-import annotations.Component;
-import data.menu.CourcesData;
-import data.menu.MenuItemData;
+import com.google.inject.Inject;
+import com.otus.annotations.Component;
+import com.otus.diconfig.GuiceScoped;
+import com.otus.menu.CourcesData;
+import com.otus.menu.MenuItemData;
+import com.otus.pages.CoursePage;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;
-import pages.CoursePage;
 
 @Component("//*[contains(@class, 'header2-menu_main')]")
 public class HeaderMenuComponent extends AnyComponentAbs<HeaderMenuComponent> {
@@ -16,8 +17,9 @@ public class HeaderMenuComponent extends AnyComponentAbs<HeaderMenuComponent> {
       + "//*[contains(@class, 'header2-menu__item_dropdown')][.//*[contains(@class, 'header2-menu__item')][text()='%s']]";
   private final String menuItemDropdownListLocator = menuItemLocator + "//*[@class='header2-menu__dropdown']";
 
-  public HeaderMenuComponent(WebDriver driver) {
-    super(driver);
+  @Inject
+  public HeaderMenuComponent(GuiceScoped guiceScoped) {
+    super(guiceScoped);
   }
 
   public HeaderMenuComponent moveToMenuItem(MenuItemData menuItemData) {
@@ -55,7 +57,7 @@ public class HeaderMenuComponent extends AnyComponentAbs<HeaderMenuComponent> {
 
     baseCourseElement.findElement(By.xpath(String.format(".//a[@title='%s']", courcesData.getName()))).click();
 
-    return new CoursePage(driver);
+    return new CoursePage((GuiceScoped) driver);
   }
 
 }

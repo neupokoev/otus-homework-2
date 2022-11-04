@@ -1,6 +1,8 @@
-package pages;
+package com.otus.pages;
 
-import annotations.UrlPrefix;
+import com.google.inject.Inject;
+import com.otus.annotations.UrlPrefix;
+import com.otus.diconfig.GuiceScoped;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
@@ -12,8 +14,9 @@ public class MainPage extends AnyPageAbs<MainPage> {
   @FindBy(css = ".cookies__button")
   private WebElement cookiesButton;
 
-  public MainPage(WebDriver driver) {
-    super(driver);
+  @Inject
+  public MainPage(GuiceScoped guiceScoped) {
+    super(guiceScoped);
   }
 
   //METHODS

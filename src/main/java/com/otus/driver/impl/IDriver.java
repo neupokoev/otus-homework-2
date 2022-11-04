@@ -1,6 +1,6 @@
-package driver.impl;
+package com.otus.driver.impl;
 
-import exceptions.DriverTypeNotSupported;
+import com.otus.exceptions.DriverTypeNotSupported;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import io.github.bonigarcia.wdm.config.Config;
 import io.github.bonigarcia.wdm.config.DriverManagerType;

@@ -1,4 +1,4 @@
-package exceptions;
+package com.otus.exceptions;
 
 import io.github.bonigarcia.wdm.config.DriverManagerType;
 

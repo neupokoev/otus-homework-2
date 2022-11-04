@@ -1,6 +1,6 @@
-package driver;
+package com.otus.driver;
 
-import exceptions.DriverTypeNotSupported;
+import com.otus.exceptions.DriverTypeNotSupported;
 import org.openqa.selenium.WebDriver;
 
 public interface IDriverFactory {
