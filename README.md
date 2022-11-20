@@ -15,8 +15,9 @@ cd otus-homework-2
 ```
 3. Запустить тесты в одном из браузеров (также должен быть установлен на запускаемой машине)
 
-|                        Браузер для запуска                        | Команда в терминале для запуска тестов        |
-|:-----------------------------------------------------------------:|:----------------------------------------------|
-| <img src="src/main/resources/chrome.png" width="40" height="40">  | `mvn clean test -Dcucumber.filter.tags="@ui"` |
-| <img src="src/main/resources/firefox.png" width="40" height="40"> | `mvn -Dbrowser="firefox" clean test`          |
-|  <img src="src/main/resources/opera.png" width="40" height="40">  | `mvn -Dbrowser="opera" clean test`            |
+|                          Браузер для запуска                          | Команда в терминале для запуска тестов           |
+|:---------------------------------------------------------------------:|:-------------------------------------------------|
+|                            Все тесты сразу                            | `mvn clean test`                                 |
+|    Поиск указанного курса ("Специализация QA Automation Engineer")    | `mvn clean test -Dcucumber.filter.tags="@name"`  |
+| Поиск курсов, стартующих в указанную дату или позже (28 декабря 2022) | `mvn clean test -Dcucumber.filter.tags="@date"`  |
+|              Выбрать самый дорогой и самый дешевый курс               | `mvn clean test -Dcucumber.filter.tags="@money"` |
