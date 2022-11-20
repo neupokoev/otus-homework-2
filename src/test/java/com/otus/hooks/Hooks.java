@@ -15,7 +15,7 @@ public class Hooks {
   }
 
 
-  @After("@ui")
+  @After
   public void afterScenario() {
     if (guiceScoped.driver != null) {
       guiceScoped.driver.close();

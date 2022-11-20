@@ -1,6 +1,5 @@
 package support;
 
-import com.otus.driver.DriverFactory;
 import io.cucumber.guice.ScenarioScoped;
 import org.openqa.selenium.WebDriver;
 

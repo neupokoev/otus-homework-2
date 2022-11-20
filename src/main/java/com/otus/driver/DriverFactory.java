@@ -8,6 +8,8 @@ import com.otus.exceptions.DriverTypeNotSupported;
 import org.openqa.selenium.WebDriver;
 import support.GuiceScoped;
 
+import java.util.Locale;
+
 public class DriverFactory implements IDriverFactory {
 
   public GuiceScoped guiceScoped;
@@ -17,11 +19,9 @@ public class DriverFactory implements IDriverFactory {
     this.guiceScoped = guiceScoped;
   }
 
-  //private final String browserType = System.getProperty("browser", "chrome").toLowerCase(Locale.ROOT);
-
   @Override
   public WebDriver getDriver() {
-    switch (guiceScoped.browserName) {
+    switch (guiceScoped.browserName.toLowerCase(Locale.ROOT)) {
 
       case "chrome":
         return new ChromeWebDriver().newDriver();

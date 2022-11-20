@@ -4,11 +4,11 @@ import static org.assertj.core.api.Assertions.assertThat;
 
 import com.google.inject.Inject;
 import com.otus.annotations.Component;
-import support.GuiceScoped;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 import pages.CoursePage;
+import support.GuiceScoped;
 
 import java.time.LocalDate;
 import java.time.Year;
@@ -68,9 +68,13 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
     return this;
   }
 
-  public OtusCourses printFilteredCoursesTitle() {
+  public OtusCourses printFilteredCoursesTitleAndClick() {
     namedCourses
-        .forEach(course -> System.out.println(course.findElement(By.cssSelector(".lessons__new-item-title")).getText()));
+        .forEach(course -> {
+          System.out.println(course.findElement(By.cssSelector(".lessons__new-item-title")).getText());
+          scrollToElement(course);
+          course.click();
+        });
     return this;
   }
 
@@ -114,7 +118,7 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
               .toLowerCase().split(" ");
           String dateInString = splittedDate[0] + " " + splittedDate[1];
           dateInString += ((splittedDate[2].length() == 4) && splittedDate[2].matches("20[0-9]+"))
-              ? splittedDate[2] : " " + Year.now();
+              ? " " + splittedDate[2] : " " + Year.now();
           try {
             return LocalDate.parse(dateInString, formatter);
           } catch (Exception exception) {//ignore
@@ -132,6 +136,33 @@ public class OtusCourses extends AnyComponentAbs<OtusCourses> {
         return;
       }
     }
+  }
+
+  //Метод поиска курсов, стартующих в указанную дату или позже указанной даты и вывод информации о них в консоль (название, дата старта)
+  public void filterCourseFromDate(String startDate) {
+
+    DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd MMMM yyyy", Locale.forLanguageTag("ru"));
+    LocalDate dateToCompare = LocalDate.parse(startDate, formatter);
+    regularCourses.stream()
+        .map(course -> {
+          String[] splittedDate = (course.findElement(By.cssSelector(".lessons__new-item-time"))).getText()
+              .toLowerCase().split(" ");
+          String dateInString = splittedDate[0] + " " + splittedDate[1];
+          dateInString += ((splittedDate[2].length() == 4) && splittedDate[2].matches("20[0-9]+"))
+              ? " " + splittedDate[2] : " " + Year.now();
+          try {
+            LocalDate courseDate = LocalDate.parse(dateInString, formatter);
+            if (courseDate.isAfter(dateToCompare) || courseDate.equals(dateToCompare))
+              System.out.println("START COURSE DATE: " + dateInString
+                  + " COURSE TITLE: " + course.findElement(By.cssSelector(".lessons__new-item-title")).getText()
+              );
+            return courseDate;
+          } catch (Exception exception) {//ignore
+          }
+          return null;
+        })
+        .filter(Objects::nonNull)//remove null objects
+        .reduce((a, b) -> a.isAfter(b) ? b : a).orElse(null);//find minimum
   }
 
 }

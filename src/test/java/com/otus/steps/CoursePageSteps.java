@@ -7,5 +7,4 @@ public class CoursePageSteps {
   @Inject
   private CoursePage coursePage;
 
-
 }

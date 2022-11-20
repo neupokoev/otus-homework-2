@@ -1,29 +1,21 @@
 package com.otus.steps;
 
 import com.google.inject.Inject;
-import support.GuiceScoped;
-import com.otus.driver.DriverFactory;
-import pages.CoursePage;
-import pages.MainPage;
+import com.otus.components.OtusCourses;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
+import pages.MainPage;
 
 public class MainPageSteps {
 
   @Inject
-  private DriverFactory driverFactory;
-  @Inject
-  private GuiceScoped guiceScoped;
-  @Inject
   private MainPage mainPage;
   @Inject
-  private CoursePage coursePage;
+  private OtusCourses otusCourses;
 
-  @Пусть("Открыта главная страница в браузере {string}")
-  public void openMainPage(String browserName) {
-    guiceScoped.browserName = browserName;
-    guiceScoped.driver = driverFactory.getDriver();
+  @Пусть("Я открываю страницу с курсами")
+  public void openMainPage() {
     mainPage.open();
   }
 
@@ -32,8 +24,17 @@ public class MainPageSteps {
     mainPage.closeAnnoyedCookiesBanner();
   }
 
-  @Тогда("Посчитать количество курсов на странице")
-  public void countOnMainPage() {
-    //mainPage.
+  @Тогда("Выбрать курс с названием {string}")
+  public void chooseCourseNamedAs(String courseName) {
+    otusCourses
+        .filterCoursesNamedAs(courseName)
+        .printFilteredCoursesTitleAndClick();
   }
+
+  @Тогда("Выбрать курсы с датой начала позже или равной {string} года")
+  public void filterCoursesFromDate(String startDate) {
+    otusCourses
+        .filterCourseFromDate(startDate);
+  }
+
 }

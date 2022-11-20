@@ -84,9 +84,9 @@ public class MouseListener implements WebDriverEventListener {
   @SneakyThrows
   public void beforeClickOn(WebElement element, WebDriver driver) {
     ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='8px solid red';", element);
-    java.lang.Thread.sleep(1000);
+    java.lang.Thread.sleep(500);//для демонстрации ради
     ((JavascriptExecutor) driver).executeScript("arguments[0].style.border='0px solid red';", element);
-    java.lang.Thread.sleep(2500);
+    java.lang.Thread.sleep(500);
   }
 
   @Override
