@@ -2,8 +2,8 @@
 <h3 align="left">Домашняя работа №2</h3>
 
 ---
-В [этом](https://github.com/neupokoev/otus-homework-2/blob/main/src/test/java/ui/courses/Homework2Tests.java) 
-файле 4 теста, реализующих задание второй домашки.\
+В [этом](https://github.com/neupokoev/otus-homework-2/blob/c5cd9587cac38b565a054bd48b7447049909ecf5/src/test/resources/com.otus) 
+пакете 3 теста, реализующих задание второй домашки.\
 Для запуска тестов необходимо выполнить несколько шагов: 
 1. Скачать данный репозиторий, запустив команду в терминале
 ```bash
