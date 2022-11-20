@@ -1,5 +1,6 @@
 package com.otus.extensions;
 
+import com.google.inject.Inject;
 import com.otus.annotations.Driver;
 import com.otus.driver.DriverFactory;
 import com.otus.listeners.MouseListener;
@@ -8,6 +9,7 @@ import org.junit.jupiter.api.extension.BeforeEachCallback;
 import org.junit.jupiter.api.extension.ExtensionContext;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.events.EventFiringWebDriver;
+import support.GuiceScoped;
 
 import java.lang.annotation.Annotation;
 import java.lang.reflect.Field;
@@ -17,6 +19,9 @@ import java.util.HashSet;
 import java.util.Set;
 
 public class UIExtension implements BeforeEachCallback, AfterEachCallback {
+
+  @Inject
+  private GuiceScoped guiceScoped;
 
   private EventFiringWebDriver driver = null;
 
@@ -36,7 +41,8 @@ public class UIExtension implements BeforeEachCallback, AfterEachCallback {
 
   @Override
   public void beforeEach(ExtensionContext extensionContext) {
-    driver = new DriverFactory().getDriver();
+    //driver = (EventFiringWebDriver) new DriverFactory(guiceScoped).getDriver();
+    driver = (EventFiringWebDriver) guiceScoped.driver;
     driver.manage().window().maximize();
     driver.register(new MouseListener());
     Set<Field> fields = getAnnotatedFields(Driver.class, extensionContext);

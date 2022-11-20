@@ -1,8 +1,9 @@
-package com.otus.pages;
+package pages;
 
+import com.google.inject.Inject;
 import com.otus.actions.CommonActions;
 import com.otus.annotations.UrlPrefix;
-import com.otus.diconfig.GuiceScoped;
+import support.GuiceScoped;
 import org.apache.commons.lang3.StringUtils;
 import org.openqa.selenium.WebDriver;
 
@@ -11,6 +12,10 @@ import java.lang.reflect.InvocationTargetException;
 
 public abstract class AnyPageAbs<T> extends CommonActions<T> {
 
+  @Inject
+  private GuiceScoped guiceScoped;
+
+  @Inject
   public AnyPageAbs(GuiceScoped guiceScoped) {
     super(guiceScoped);
   }
@@ -23,7 +28,7 @@ public abstract class AnyPageAbs<T> extends CommonActions<T> {
     }
   }
 
-  private String getBaseUrl() {
+  /*private String getBaseUrl() {
     return StringUtils.stripEnd(System.getProperty("webdriver.base.url"), "/");
   }
 
@@ -34,12 +39,13 @@ public abstract class AnyPageAbs<T> extends CommonActions<T> {
     }
 
     return "";
-  }
+  }*/
 
   public T open() {
-    driver.get(getBaseUrl() + getUrlPrefix());
+    //guiceScoped.driver.get(getBaseUrl() + getUrlPrefix());
+    guiceScoped.driver.get(System.getProperty("webdriver.base.url","http://otus.ru"));
 
-    return (T) page(getClass());
+    return (T) this;
   }
 
   public <T> T page(Class<T> clazz) {
@@ -61,6 +67,6 @@ public abstract class AnyPageAbs<T> extends CommonActions<T> {
 
   public T printPageTitle() {
     System.out.println(driver.getTitle());
-    return (T) page(getClass());
+    return (T) this;
   }
 }

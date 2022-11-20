@@ -15,8 +15,8 @@ cd otus-homework-2
 ```
 3. Запустить тесты в одном из браузеров (также должен быть установлен на запускаемой машине)
 
-|                        Браузер для запуска                        | Команда в терминале для запуска тестов  |
-|:-----------------------------------------------------------------:|:----------------------------------------|
-| <img src="src/main/resources/chrome.png" width="40" height="40">  | `mvn -Dbrowser="chrome" clean test`     |
-| <img src="src/main/resources/firefox.png" width="40" height="40"> | `mvn -Dbrowser="firefox" clean test`    |
-|  <img src="src/main/resources/opera.png" width="40" height="40">  | `mvn -Dbrowser="opera" clean test`      |
+|                        Браузер для запуска                        | Команда в терминале для запуска тестов        |
+|:-----------------------------------------------------------------:|:----------------------------------------------|
+| <img src="src/main/resources/chrome.png" width="40" height="40">  | `mvn clean test -Dcucumber.filter.tags="@ui"` |
+| <img src="src/main/resources/firefox.png" width="40" height="40"> | `mvn -Dbrowser="firefox" clean test`          |
+|  <img src="src/main/resources/opera.png" width="40" height="40">  | `mvn -Dbrowser="opera" clean test`            |

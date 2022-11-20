@@ -10,8 +10,6 @@ import java.time.Duration;
 
 /**
  * Набор стандартных ожиданий
- *
- * @author Pavel Balahonov <p.balahonov@corp.mail.ru>
  */
 public class StandardWaiter implements IWaiter {
 
@@ -23,7 +21,8 @@ public class StandardWaiter implements IWaiter {
 
   @Override
   public boolean waitForCondition(ExpectedCondition condition) {
-    WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECOND));
+    //WebDriverWait webDriverWait = new WebDriverWait(driver, Duration.ofSeconds(IMPLICITLY_WAIT_SECOND));
+    WebDriverWait webDriverWait = new WebDriverWait(driver, IMPLICITLY_WAIT_SECOND);
     try {
       webDriverWait.until(condition);
       return true;

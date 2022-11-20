@@ -1,9 +1,8 @@
-package com.otus.pages;
+package pages;
 
 import com.google.inject.Inject;
 import com.otus.annotations.UrlPrefix;
-import com.otus.diconfig.GuiceScoped;
-import org.openqa.selenium.WebDriver;
+import support.GuiceScoped;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.FindBy;
 

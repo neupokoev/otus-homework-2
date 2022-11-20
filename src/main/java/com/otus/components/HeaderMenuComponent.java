@@ -2,10 +2,10 @@ package com.otus.components;
 
 import com.google.inject.Inject;
 import com.otus.annotations.Component;
-import com.otus.diconfig.GuiceScoped;
+import support.GuiceScoped;
 import com.otus.menu.CourcesData;
 import com.otus.menu.MenuItemData;
-import com.otus.pages.CoursePage;
+import pages.CoursePage;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
 import org.openqa.selenium.support.ui.ExpectedConditions;

@@ -2,9 +2,8 @@ package com.otus.components;
 
 import com.otus.actions.CommonActions;
 import com.otus.annotations.Component;
-import com.otus.diconfig.GuiceScoped;
+import support.GuiceScoped;
 import org.openqa.selenium.By;
-import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 

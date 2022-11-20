@@ -1,15 +1,12 @@
 package com.otus.actions;
 
-import com.otus.diconfig.GuiceScoped;
+import support.GuiceScoped;
+import com.otus.waiters.StandardWaiter;
 import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
-import org.openqa.selenium.UnsupportedCommandException;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.interactions.Actions;
-import org.openqa.selenium.interactions.MoveTargetOutOfBoundsException;
 import org.openqa.selenium.support.PageFactory;
-import com.otus.waiters.StandardWaiter;
 
 import java.util.List;
 import java.util.function.BiConsumer;
@@ -37,15 +34,15 @@ public abstract class CommonActions<T> {
   }
 
   public void scrollToElement(WebElement webElement) {
-    try {
+    /*try {
       new Actions(driver)
           .scrollToElement(webElement)
           .perform();
-    } catch (UnsupportedCommandException | MoveTargetOutOfBoundsException exception) {
-      //opera does not support Actions
-      //firefox does not work correctly without selenium-leg-rc dependency
-      ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", webElement);
-    }
+    } catch (UnsupportedCommandException | MoveTargetOutOfBoundsException exception) {*/
+    //opera does not support Actions
+    //firefox does not work correctly without selenium-leg-rc dependency
+    ((JavascriptExecutor) driver).executeScript("arguments[0].scrollIntoView();", webElement);
+    //}
   }
 
 }

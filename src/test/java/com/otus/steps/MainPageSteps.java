@@ -1,8 +1,10 @@
 package com.otus.steps;
 
 import com.google.inject.Inject;
-import com.otus.pages.CoursePage;
-import com.otus.pages.MainPage;
+import support.GuiceScoped;
+import com.otus.driver.DriverFactory;
+import pages.CoursePage;
+import pages.MainPage;
 import io.cucumber.java.ru.Если;
 import io.cucumber.java.ru.Пусть;
 import io.cucumber.java.ru.Тогда;
@@ -10,13 +12,18 @@ import io.cucumber.java.ru.Тогда;
 public class MainPageSteps {
 
   @Inject
+  private DriverFactory driverFactory;
+  @Inject
+  private GuiceScoped guiceScoped;
+  @Inject
   private MainPage mainPage;
-
   @Inject
   private CoursePage coursePage;
 
-  @Пусть("Открываем главную страницу")
-  public void openMainPage() {
+  @Пусть("Открыта главная страница в браузере {string}")
+  public void openMainPage(String browserName) {
+    guiceScoped.browserName = browserName;
+    guiceScoped.driver = driverFactory.getDriver();
     mainPage.open();
   }
 

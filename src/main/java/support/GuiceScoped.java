@@ -1,4 +1,4 @@
-package com.otus.diconfig;
+package support;
 
 import com.otus.driver.DriverFactory;
 import io.cucumber.guice.ScenarioScoped;
@@ -6,6 +6,6 @@ import org.openqa.selenium.WebDriver;
 
 @ScenarioScoped
 public class GuiceScoped {
-  public final WebDriver driver = new DriverFactory().getDriver();
-
+  public String browserName;
+  public WebDriver driver;
 }
